@@ -7,7 +7,7 @@ data: new SlashCommandBuilder()
     .setDescription('fetch a servers icon'),
 async execute(interaction, guild) {
 
-    const servericon = interaction.guild.iconURL({ size: 1024})
+    const servericon = interaction.guild.iconURL({ extension: "png", size: 1024})
 
     if (!servericon) return interaction.reply({ content: 'This server does not have an icon'});
 

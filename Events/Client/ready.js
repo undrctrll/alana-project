@@ -18,8 +18,8 @@ module.exports = {
             console.error('MongoDB connection failed:', error.message);
         }
 
-        client.user.setPresence({ activities: [{ name: 'Ramadhan Kareem 🌙' }], status: 'idle' });
+        client.user.setPresence({ activities: [{ name: 'Ramadhan Kareem 🌙', type: ActivityType.Playing }], status: 'idle' });
 
-        console.log(`${client.user.username} is now online.`);
+        console.log(client.user.username + ' is now online.');
     },
 };

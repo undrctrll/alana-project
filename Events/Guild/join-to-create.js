@@ -1,5 +1,5 @@
 const client = require('../../index')
-const { ChannelType, GuildVoice, Collection } = require('discord.js')
+const { ChannelType, GuildVoice, Collection, PermissionFlagsBits } = require('discord.js')
 const schema = require("../../Models/jointocreate")
 let voiceManager = new Collection()
 
@@ -28,11 +28,11 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
                 permissionOverwrites: [
                     {
                         id: member.id,
-                        allow: ["Connect", "ManageChannels"],
+                        allow: [PermissionFlagsBits.Connect, PermissionFlagsBits.ManageChannels],
                     },
                     {
                         id: guild.id,
-                        allow: ["Connect"],
+                        allow: [PermissionFlagsBits.Connect],
                     },
                 ],
                 userLimit: userlimit
@@ -43,7 +43,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             await newChannel.permissionOverwrites.edit(member, {
                 Connect: false
             });
-            setImmedout(() => {
+            setTimeout(() => {
                 newChannel.permissionOverwrites.delete(member);
             }, 30000)
 
@@ -69,7 +69,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
                     oldChannel.setName(randomMember.user.username).catch((e) => null);
                     oldChannel.permissionOverwrites.edit(randomMember, {
                         Connect: true,
-                        ManageChannels: True
+                        ManageChannels: true
                     })
                 })
                 voiceManager.set(member.id, null)

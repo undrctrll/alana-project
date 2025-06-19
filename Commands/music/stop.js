@@ -17,7 +17,7 @@ module.exports = {
             return interaction.reply({embeds: [embed], ephemeral: true})
         }
 
-        if(!member.voice.channelId == guild.members.me.voice.channelId) {
+        if(guild.members.me.voice.channelId && member.voice.channelId !== guild.members.me.voice.channelId) {
             embed.setColor("Red").setDescription(`You cant use the player because it is active in another channel in <#${guild.members.me.voice.channelId}> `);
             return interaction.reply({embeds: [embed], ephemeral: true})
         }

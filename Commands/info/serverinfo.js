@@ -71,9 +71,9 @@ module.exports = {
             new EmbedBuilder()
                 .setColor(members.me.roles.highest.hexColor)
                 .setTitle(`${guild.name}'s Information`)
-                .setThumbnail(guild.iconURL({ size: 1024 }))
-                .setImage(guild.bannerURL({ size: 1024 }))
-                .addFields(
+                .setThumbnail(guild.iconURL({ extension: "png", size: 1024 }))
+                .setImage(guild.bannerURL({ extension: "png", size: 1024 }))
+                .addFields([
                     { name: "Description", value: `📝 ${guild.description || "None"}` },
                     {
                         name: "General",
@@ -135,7 +135,7 @@ module.exports = {
                         inline: true
                     },
                     { name: "Banner", value: guild.bannerURL() ? "** **" : "None" }
-                )
+                ])
         ], ephemeral: false });
     }
 }

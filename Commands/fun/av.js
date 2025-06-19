@@ -9,7 +9,7 @@ module.exports = {
             const user = interaction.options.getUser('user') || interaction.user;
             const embed = new EmbedBuilder()
             .setTitle(`${user.username}'s avatar`)
-            .setImage(user.displayAvatarURL({ dynamic: true, size: 4096 }))
+            .setImage(user.displayAvatarURL({ extension: "png", size: 4096 }))
             .setTimestamp()
             .setColor('#A020F0');
             await interaction.reply({ embeds: [embed] });

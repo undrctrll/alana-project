@@ -50,7 +50,7 @@ module.exports = {
             const Booster = member.premiumSince ? "<:discordboost7:1098506412914647050>" : "✖";
 
             const embed = new EmbedBuilder()
-            .setAuthor({ name: `${member.user.tag} | General Information`, iconURL: member.displayAvatarURL() })
+            .setAuthor({ name: `${member.user.tag} | General Information`, iconURL: member.displayAvatarURL({ extension: "png" }) })
             .setColor(member.displayColor)
             .setDescription(`On <t:${joinTime}:D>, ${member.user.username} joined as the **${addSuffix(joinPosition)}** member of this guild`)
             .setImage('attachment://profile.png')
@@ -61,8 +61,8 @@ module.exports = {
                 { name: "Created", value: `<t:${createdTime}:R>`, inline: true },
                 { name: "Joined", value: `<t:${joinTime}:R>`, inline: true },
                 { name: "Identifiter", value: `${member.id}`, inline: false },
-                { name: "Avatar", value: `[Link](${member.displayAvatarURL()})`, inline: true },
-                { name: "Banner", value: `[Link](${(await member.user.fetch()).bannerURL()})`, inline: true },
+                { name: "Avatar", value: `[Link](${member.displayAvatarURL({ extension: "png" })})`, inline: true },
+                { name: "Banner", value: `[Link](${(await member.user.fetch()).bannerURL({ extension: "png" })})`, inline: true },
             ]);
         
             interaction.editReply({embeds: [embed], files: [imageAttachment]});
